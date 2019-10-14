@@ -1,3 +1,6 @@
+#
+# Based on https://tensorflow.org/tutorials/keras/classification
+#
 import tensorflow as tf
 from tensorflow import keras
 

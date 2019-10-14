@@ -16,6 +16,7 @@ class CNN_MNIST:
         self.xTrain, self.yTrain = x_train, y_train
         self.xTest, self.yTest = x_test, y_test
 
+        # tensorflow callbacks intoduced at https://www.tensorflow.org/guide/keras/custom_callback
         log_dir = "./logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         self.tb_callback = keras.callbacks.TensorBoard(log_dir=log_dir)
 
