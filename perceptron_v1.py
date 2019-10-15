@@ -1,23 +1,5 @@
 import tensorflow as tf
 
-# W = tf.Variable(tf.ones(shape=(2,2)), name="W")
-# b = tf.Variable(tf.zeros(shape=(2)), name="b")
-
-# @tf.function
-# def forward(x):
-#   print(W)    
-#   return W * x + b
-
-# out_a = forward([1,0])
-# print(out_a)  
-
-# out_b = forward([0,1])
-# regularizer = tf.keras.regularizers.l2(0.04)
-# reg_loss = regularizer(W)
-
-# Enabling eager execution changes how TensorFlow operations behave.
-# now they immediately evaluate and return their values to Python
-
 # # In Tensorflow 2.0, eager execution is enabled by default.
 # tf.executing_eagerly()
 tf.compat.v1.disable_eager_execution()
@@ -31,9 +13,6 @@ y = tf.multiply(w, x, name='output')
 
 y_ = tf.constant(0.0)
 loss = (y - y_)**2
-# @tf.function
-# def loss(y):
-#     return (y - y_)**2
 
 optim =  tf.compat.v1.train.GradientDescentOptimizer(learning_rate = 0.025)
 
@@ -44,8 +23,6 @@ optim =  tf.compat.v1.train.GradientDescentOptimizer(learning_rate = 0.025)
 grads_and_vars = optim.compute_gradients(loss)
 print(grads_and_vars) # should be 1.6 after session run, 
                       # for a meanwhile prints the reference to graph's node  
-
-# optim.apply_gradients(grads_and_vars)
 
 sess = tf.compat.v1.Session()
 sess.run(tf.compat.v1.global_variables_initializer())
