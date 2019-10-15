@@ -5,9 +5,10 @@ CNNs with different models built with Keras on TensorFlow2
 ## Content
 1. TF2 eager execution. Constants and variables. @tf.function decorator
 2. [Simple percepton](https://github.com/olegkleiman/tf_keras/blob/master/perceptron_v1.py)(TF1): loss function, optimizer
-3. Multi-dimentional perceptron
-4. Keras: layers of perceptrons
-5. Models: Keras.Sequential
+3. [Yet Another Simple Perceptron](https://github.com/olegkleiman/tf_keras/blob/master/perceptron_v2.py)(TF1): optimizer with minimize()
+4. Multi-dimentional perceptron
+5. Keras: layers of perceptrons
+6. Models: Keras.Sequential()
 
 ## How to build
 1. Use Python virtual environment (.venv) 
