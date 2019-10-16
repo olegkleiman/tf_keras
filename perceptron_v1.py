@@ -1,3 +1,8 @@
+#
+# This this a simplest perceptron implementation
+# with GradientDescentOptimizer
+#
+# This example use Session object from TF1
 import tensorflow as tf
 
 # # In Tensorflow 2.0, eager execution is enabled by default.
@@ -5,6 +10,9 @@ import tensorflow as tf
 tf.compat.v1.disable_eager_execution()
 
 print("Devices: ", len(tf.config.experimental.list_physical_devices(device_type=None)))
+print("TensorFlow version: {}".format(tf.__version__))
+print("Eager execution: {}".format(tf.executing_eagerly()))
+
 # tf.debugging.set_log_device_placement(True)
 
 x = tf.constant(1.0, name='input')
@@ -31,14 +39,15 @@ print(sess.run(grads_and_vars[0][0]))
 sess.run(optim.apply_gradients(grads_and_vars))
 print(sess.run(w)) # should be 0.76
 # The weight decreased by 0.04 because the optimizer subtracted 
-# the gradient times the learning rate, 1.6 * 0.025, pushing the weight in the right direction.
+# the gradient (deriative from loss function) times the learning rate, 
+# i.e. 1.6 * 0.025, pushing the weight in the right direction.
 
 def fit(epochs):
     calculated_weight = 0
     for step in range(epochs):
         sess.run(grads_and_vars[0][0]) # calculate new gradients
         sess.run(optim.apply_gradients(grads_and_vars))
-        calculated_weight = sess.run(w) # should decrease each spep because the same resons
+        calculated_weight = sess.run(w) # should decrease each spep because the same reasons
         
     return calculated_weight    
 

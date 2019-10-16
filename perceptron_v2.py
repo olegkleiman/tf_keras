@@ -1,3 +1,7 @@
+#
+# This step evolves the perceptron_v1.py by introducing 
+# mimimize() method on GradientDescentOptimizer
+#
 import tensorflow as tf
 tf.compat.v1.disable_eager_execution()
 
@@ -8,9 +12,9 @@ w = tf.Variable(0.8, name='weight')
 y = tf.multiply(w, x, name='output')
 
 y_ = tf.constant(0.0)
-loss = (y - y_)**2
+loss = tf.pow(y - y_, 2, "loss")
 
-# optim =  tf.compat.v1.train.GradientDescentOptimizer(learning_rate = 0.025)
+# minimize simply compute gradient (using tf.GradientTape) and calls apply_gragients()
 train_step = tf.compat.v1.train.GradientDescentOptimizer(0.025).minimize(loss)
 
 sess = tf.compat.v1.Session()
