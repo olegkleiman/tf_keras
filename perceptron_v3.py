@@ -13,23 +13,24 @@ class Model(object):
         self.bias = tf.Variable(0.)
 
     def __call__(self, x):
-        return self.W * x + self.bias
+        return self.W * x # + self.bias
 
 def loss(predicted_y, desired_y):
-    return tf.reduce_sum(tf.square(predicted_y - desired_y))
+    return tf.reduce_sum(tf.square(predicted_y - desired_y)) # reduce across all axes
+    # return tf.square(predicted_y - desired_y)
 
 # optimizer = tf.optimizers.Adam(0.1)
 optimizer = tf.optimizers.SGD(learning_rate = 0.025)
 
 def train(model, inputs, outputs):
-    with tf.GradientTape() as t:
+    with tf.GradientTape() as tape:
         current_loss = loss(model(inputs), outputs)
-        grads = t.gradient(current_loss, [model.W, model.bias])
-        optimizer.apply_gradients(zip(grads,[model.W, model.bias]))
-        print(current_loss)
+    grads = tape.gradient(current_loss, [model.W, model.bias])
+    optimizer.apply_gradients(zip(grads,[model.W, model.bias]))
+    print(f"Current loss: {current_loss}, weigth: {model.W.value()}")
 
 model = Model(x, y)   
-train(model,x,y)     
 
-for i in range(100):
+for i in range(300):
+    print(model.bias.numpy())
     train(model,x,y)
