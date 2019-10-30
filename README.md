@@ -3,7 +3,7 @@ TensorFlow2 with Keras
 CNNs with different models built with Keras on TensorFlow2
 
 ## Content
-1. [Simplest perceptron](https://github.com/olegkleiman/tf_keras/blob/master/perceptron_visual_classification.py) with Python only
+1. [Simplest (but visualized) perceptron](https://github.com/olegkleiman/tf_keras/blob/master/perceptron_visual_classification.py) with Python only
 2. TF2 eager execution. Constants and variables. @tf.function decorator
 3. [Simple percepton](https://github.com/olegkleiman/tf_keras/blob/master/perceptron_v1.py)(TF1): loss function, optimizer
 4. [Yet Another Simple Perceptron](https://github.com/olegkleiman/tf_keras/blob/master/perceptron_v2.py)(TF1): optimizer with minimize()
