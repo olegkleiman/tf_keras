@@ -22,7 +22,7 @@ class Plotable(object):
         _error = error if isinstance(error, float) else error.numpy()
         # _error = error.numpy()
         print(_error)
-        plt.suptitle(f"w1={round(w1, 4)}, w2={round(w2, 4)}, bias={round(bias, 4)} error={round(_error, 4)}\n loss={loss}\ny={round((-bias-w1)/w2, 4)}*x + {round(-bias/w2, 4)}", 
+        plt.suptitle(f"w1={round(w1, 4)}, w2={round(w2, 4)}, bias={round(bias, 4)} error={round(_error, 4)}\n loss={loss}\ny={round((-w1)/w2, 4)}*x + {round(-bias/w2, 4)}", 
                      horizontalalignment = 'center',
                      fontsize='large')
 

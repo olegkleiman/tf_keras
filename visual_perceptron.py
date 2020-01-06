@@ -96,10 +96,11 @@ class VisualPerceptron(Plotable):
             is_error = is_error or self.error != 0
 
             X = np.insert(sample, 0, [1]) # adding bias
-            self.weights += np.multiply(self.learning_rate * self.__error, X)
+            self.weights += np.multiply(self.learning_rate * self.error, X)
+            
+            sigma = self.activation(prediction)
+            self.weights += np.multiply(self.learning_rate * self.error * sigma * ( 1 - sigma), X)
 
-            # self.weights[1:] += np.multiply(self.learning_rate * self.__error, sample)
-            # self.weights[0] += np.multiply(self.learning_rate, self.error)
             step = step + 1
 
         super().redraw(self.inputs, self.labels, self.weights, self.error, self.loss)
