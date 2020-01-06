@@ -7,14 +7,15 @@ print(np.c_[np.ones((4, 1)), a])
 _tt = 2 * np.random.rand(100, 1)  
 
 def generate_data():  
-    X = 2 * np.random.rand(100, 1)  
+    X = 2 * np.random.rand(100, 1)
+    _X = np.c_[np.ones((100, 1)), X] 
     y = 3 * X + np.random.randn(100, 1) + 4
       
     # y = 4 + 3X + Gaussian noise  
     # theta_0 or Bias Term = 4   
     # theta_1 = 3  
       
-    return X, y  
+    return _X, y  
 
 def generate_noiseless_data():  
     X = np.random.rand(100, 1) # * 2
@@ -40,18 +41,18 @@ def get_best_param(X, y):
     return best_params # returns a list  
 
 X, y = generate_data() #  generate_noiseless_data() 
-# X_b = np.c_[np.ones((100, 1)), X]
-plt.plot(X, y, "b.") 
+plt.plot(X[:,1],  # draw only not-bias column
+         y, "b.") 
 
-# ___t  = X.transpose()
 params = get_best_param(X, y) 
 print(f"W: {params}")
 
 test_X = np.array([[0], [2]])  
-# test_X_b = np.c_[np.ones((2, 1)), test_X] 
+test_X_b = np.c_[np.ones((2, 1)), test_X] 
+# _X = np.c_[np.ones((2, 1)), X] 
 
-prediction = test_X.dot(params)
-print(prediction) 
+prediction = test_X_b.dot(params)
+print(f"Prediction: {prediction}") 
 plt.plot(test_X, prediction, "r--") 
 
 plt.show()
